@@ -72,7 +72,7 @@ function mousePressed() {
 
   // Only allow adding lines near canvas edges
   // Start long-press timer
-  pressStartTime = millis();
+  pressStartTime = millis(); // New https://p5js.org/reference/#/p5/millis
   pressStartPos = { x: mouseX, y: mouseY };
 
   let edgeMargin = 30;
@@ -100,7 +100,7 @@ function mousePressed() {
   }
 }
 
-function mouseReleased() {
+function mouseReleased() { // New function https://p5js.org/reference/p5/mouseReleased/
   if (!pressStartTime) return;
 
   let heldTime = millis() - pressStartTime;
@@ -132,11 +132,11 @@ function doubleClicked() {
       mouseX > r.x && mouseX < r.x + r.w &&
       mouseY > r.y && mouseY < r.y + r.h
     ) {
-      if (!r.locked) {
+      if (!r.locked) { // New https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics
         let neighbors = getNeighborColors(r.x, r.y, r.w, r.h);
         let choices = ['red', 'yellow', 'blue'].filter(c => !neighbors.includes(c));
         if (choices.length === 0) return;
-        r.color = random(choices);
+        r.color = random(choices); // New https://p5js.org/reference/#/p5/random
         redraw();
       }
       return;
@@ -155,7 +155,7 @@ function doubleClicked() {
       let h = hLines[i + 1] - hLines[i] - lineWidth;
 
       if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
-        let exists = filledRects.some(r =>
+        let exists = filledRects.some(r => // New https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
           r.x === x && r.y === y && r.w === w && r.h === h
         );
         if (exists) return;
