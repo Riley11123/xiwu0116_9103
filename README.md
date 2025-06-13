@@ -5,11 +5,11 @@ An interactive p5.js sketch inspired by Piet Mondrian’s compositions. Users ca
 
 ## Interaction Instructions
 
-**Rule 1:** Click on the edges of the canvas to add straight lines. Once there are more than 5 lines, rectangles can be created.
+**Rule 1:** Click on the edge of the canvas to add straight lines.Once there are more than 5 lines, Rule 2 will be enabled.
 
-**Rule 2:** Double-click on a rectangle formed between the lines to fill it with red, yellow, or blue. Double-click again to change the color.
+**Rule 2:** Double-click on a rectangle formed by the lines to fill itwith red, yellow, or blue. You can double-click again tochange the color.
 
-**Rule 3:** Long-press on a filled rectangle for 2 seconds to turn it white and lock it (this prevents further color changes).
+**Rule 3:** Long-press on a filled rectangle for 2 seconds to turn itwhite. This makes the rectangle unchangeable and is usefulfor removing colors.
 
 **Rule 4:** Click on any blank area to begin drawing.
 
@@ -23,7 +23,7 @@ I will create animation by changing the positions of lines and rectangles, as we
 
 ## Sources of Inspiration and Influence
 
-My inspiration comes from Mondrian's works Composition with Red, Blue and Yellow and Broadway Boogie Woogie. I was deeply drawn to the use of lines and color in Composition with Red, Blue and Yellow—the artist constructed the composition using bold black lines and rectangles in the three primary colors: red, yellow, and blue. This inspired the visual language I implemented in my code. Meanwhile, Broadway Boogie Woogie features a freer rhythm and a more complex grid structure, transforming the artwork from a purely static image into something more like an abstract map filled with movement and rhythm. This inspired me to incorporate interactivity into my work—allowing users to dynamically add lines with mouse clicks to freely divide the canvas, and to use color changes and long-press locking as ways to inject a sense of “rhythm” and “control” into the piece, as if having a dialogue with the painting itself.
+My inspiration comes from Mondrian's works Composition with Red, Blue and Yellow and Broadway Boogie Woogie. I was deeply drawn to the use of lines and color in Composition with Red, Blue and Yellow. The artist constructed the composition using bold black lines and rectangles in the three primary colors: red, yellow, and blue. This inspired the visual language I implemented in my code. Meanwhile, Broadway Boogie Woogie features a freer rhythm and a more complex grid structure, transforming the artwork from a purely static image into something more like an abstract map filled with movement and rhythm. This inspired me to incorporate interactivity into my work—allowing users to dynamically add lines with mouse clicks to freely divide the canvas, and to use color changes and long-press locking as ways to inject a sense of “rhythm” and “control” into the piece, as if having a dialogue with the painting itself.
 
 ![Composition with Red, Blue and Yellow](Image/Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg)
 
@@ -41,11 +41,11 @@ In my code, I used several functions to add interactivity and a sense of animati
 
 **1. mouseReleased()**
 The mouseReleased() function is automatically triggered when I release the mouse—specifically at the moment after a click is released. In my project, I used this function to detect whether a rectangle has been long-pressed. For example, if it’s held for more than 2 seconds, it turns white and gets locked.
-- **https://p5js.org/reference/#/p5/mouseReleased**
+- **https://p5js.org/reference/p5/mouseReleased/**
 
 **2. millis()**
-The millis() function returns the number of milliseconds that have passed since the program started running. I used it to calculate how long the mouse was held down. In mousePressed(), I recorded the starting millis() time, and then in mouseReleased() I used millis() again to find the difference. If that time difference is greater than 2000 milliseconds, it means the user held the click for 2 seconds or more.
-- **https://p5js.org/reference/#/p5/millis**
+I used the millis() function to calculate how long the mouse was held down. In mousePressed(), I recorded the starting millis() time, and then in mouseReleased() I used millis() again to find the difference. If that time difference is greater than 2000 milliseconds, it means the user held the click for 2 seconds or more.
+- **https://p5js.org/reference/p5/millis/**
 
 **3. some()**
 I used the some() method to help check whether the spot the user clicked on already contains a rectangle (in other words, whether one has already been drawn there). It returns true if at least one match is found, otherwise false.
