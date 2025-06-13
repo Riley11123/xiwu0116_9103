@@ -132,11 +132,11 @@ function doubleClicked() {
       mouseX > r.x && mouseX < r.x + r.w &&
       mouseY > r.y && mouseY < r.y + r.h
     ) {
-      if (!r.locked) { // New https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Object_basics
+      if (!r.locked) {
         let neighbors = getNeighborColors(r.x, r.y, r.w, r.h);
         let choices = ['red', 'yellow', 'blue'].filter(c => !neighbors.includes(c));
         if (choices.length === 0) return;
-        r.color = random(choices); // New https://p5js.org/reference/#/p5/random
+        r.color = random(choices);
         redraw();
       }
       return;
