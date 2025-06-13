@@ -29,7 +29,7 @@ My inspiration comes from Mondrian's works Composition with Red, Blue and Yellow
 
 - **[Composition with Red, Blue and Yellow](https://en.wikipedia.org/wiki/Composition_with_Red_Blue_and_Yellow)**
 
-![Broadway Boogie Woogie](Image/Broadway_Boogie_Woogie.jpg)
+![Broadway Boogie Woogie](Image/Broadway_Boogie_Woogie.jpeg)
 
 - **[Broadway Boogie Woogie](https://en.wikipedia.org/wiki/Broadway_Boogie_Woogie)**
 
