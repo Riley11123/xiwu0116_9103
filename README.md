@@ -32,3 +32,16 @@ My inspiration comes from Mondrian's works Composition with Red, Blue and Yellow
 
 In my code, I used several functions to add interactivity and a sense of animation to what was originally a static Mondrian-style composition. For example, in mousePressed(), when I click near the edge of the canvas, a new line is added, and the screen is redrawn. This makes it feel like the lines are growing step by step. Then, in doubleClicked(), if I double-click between two lines, a random color is applied to the rectangle formed there. I can even double-click again to change it to another color, which creates an animated effect of color shifting. Long-pressing a block turns it white and locks it so it no longer changes. Although the overall composition is static, these interactive actions allow the user to “perform” the creation of their own layout step by step—giving them control over composing a Mondrian-style artwork.
 
+**New technologies and sources**
+
+**1. mouseReleased()**
+The mouseReleased() function is automatically triggered when I release the mouse—specifically at the moment after a click is released. In my project, I used this function to detect whether a rectangle has been long-pressed. For example, if it’s held for more than 2 seconds, it turns white and gets locked.
+- **https://p5js.org/reference/#/p5/mouseReleased**
+
+**2. millis()**
+The millis() function returns the number of milliseconds that have passed since the program started running. I used it to calculate how long the mouse was held down. In mousePressed(), I recorded the starting millis() time, and then in mouseReleased() I used millis() again to find the difference. If that time difference is greater than 2000 milliseconds, it means the user held the click for 2 seconds or more.
+- **https://p5js.org/reference/#/p5/millis**
+
+**3. some()**
+I used the some() method to help check whether the spot the user clicked on already contains a rectangle (in other words, whether one has already been drawn there). It returns true if at least one match is found, otherwise false.
+- **https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some**
