@@ -25,11 +25,11 @@ I will create animation by changing the positions of lines and rectangles, as we
 
 My inspiration comes from Mondrian's works Composition with Red, Blue and Yellow and Broadway Boogie Woogie. I was deeply drawn to the use of lines and color in Composition with Red, Blue and Yellow—the artist constructed the composition using bold black lines and rectangles in the three primary colors: red, yellow, and blue. This inspired the visual language I implemented in my code. Meanwhile, Broadway Boogie Woogie features a freer rhythm and a more complex grid structure, transforming the artwork from a purely static image into something more like an abstract map filled with movement and rhythm. This inspired me to incorporate interactivity into my work—allowing users to dynamically add lines with mouse clicks to freely divide the canvas, and to use color changes and long-press locking as ways to inject a sense of “rhythm” and “control” into the piece, as if having a dialogue with the painting itself.
 
-![Composition with Red, Blue and Yellow](Images/Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg)
+![Composition with Red, Blue and Yellow](Image/Mondrian_Composition_II_in_Red,_Blue,_and_Yellow.jpg)
 
 - **[Composition with Red, Blue and Yellow](https://en.wikipedia.org/wiki/Composition_with_Red_Blue_and_Yellow)**
 
-![Broadway Boogie Woogie](Images/Broadway Boogie Woogie.jpg)
+![Broadway Boogie Woogie](Image/Broadway_Boogie_Woogie.jpg)
 
 - **[Broadway Boogie Woogie](https://en.wikipedia.org/wiki/Broadway_Boogie_Woogie)**
 
