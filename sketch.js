@@ -104,7 +104,7 @@ function mouseReleased() {
   if (!pressStartTime) return;
 
   let heldTime = millis() - pressStartTime;
-  // If long press is over 2 seconds, turn matching rect white
+  // If long press is over 2 seconds, turn matching rect white and lock it
   if (heldTime >= 2000) {
     for (let r of filledRects) {
       if (
@@ -112,6 +112,7 @@ function mouseReleased() {
         pressStartPos.y > r.y && pressStartPos.y < r.y + r.h
       ) {
         r.color = [255, 255, 255]; // Turn to white
+        r.locked = true;           // Prevent further edits
         redraw();
         break;
       }
@@ -125,26 +126,45 @@ function mouseReleased() {
 function doubleClicked() {
   if (lines.length < 5) return; // Require at least 5 lines before filling
 
-  // Sort horizontal and vertical line positions
+  // First: check if clicking on an existing rectangle
+  for (let r of filledRects) {
+    if (
+      mouseX > r.x && mouseX < r.x + r.w &&
+      mouseY > r.y && mouseY < r.y + r.h
+    ) {
+      if (!r.locked) {
+        let neighbors = getNeighborColors(r.x, r.y, r.w, r.h);
+        let choices = ['red', 'yellow', 'blue'].filter(c => !neighbors.includes(c));
+        if (choices.length === 0) return;
+        r.color = random(choices);
+        redraw();
+      }
+      return;
+    }
+  }
+
+  // Continue using line intersections to define new rectangles (only if not already filled)
   let hLines = lines.filter(l => l.type === 'h').map(l => l.pos).sort((a, b) => a - b);
   let vLines = lines.filter(l => l.type === 'v').map(l => l.pos).sort((a, b) => a - b);
 
-  // Iterate through all grid rectangles formed by adjacent lines
   for (let i = 0; i < hLines.length - 1; i++) {
     for (let j = 0; j < vLines.length - 1; j++) {
-      // Compute rectangle dimensions, offsetting for line thickness
       let x = vLines[j] + lineWidth / 2;
       let y = hLines[i] + lineWidth / 2;
       let w = vLines[j + 1] - vLines[j] - lineWidth;
       let h = hLines[i + 1] - hLines[i] - lineWidth;
 
-      // Check if the mouse click is inside this rectangle
       if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
+        let exists = filledRects.some(r =>
+          r.x === x && r.y === y && r.w === w && r.h === h
+        );
+        if (exists) return;
+
         let neighbors = getNeighborColors(x, y, w, h);
         let choices = ['red', 'yellow', 'blue'].filter(c => !neighbors.includes(c));
         if (choices.length === 0) return;
         let picked = random(choices);
-        filledRects.push({ x, y, w, h, color: picked });
+        filledRects.push({ x, y, w, h, color: picked, locked: false });
         redraw();
         return;
       }
